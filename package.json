@@ -6,12 +6,16 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "createUser": "nodemon ./server/index.js & node ./database/script/setup.js"
   },
   "dependencies": {
     "axios": "^0.19.2",
     "bulma": "^0.8.0",
     "core-js": "^3.6.4",
+    "mongoose": "^5.9.2",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
     "vue": "^2.6.11",
     "vue-router": "^3.1.5",
     "vuex": "^3.1.2"
