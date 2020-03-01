@@ -1,20 +1,17 @@
 <template>
-  <div class="box-login">
-    <div class="box-input">
-        <span>LOGIN:</span>
-        <input class="input" v-model="login" type="text" placeholder="Text your username">
-    </div>
-    <div class="box-input">
-        <span>PASSWORD:</span>
-        <input class="input" v-model="password" type="text" placeholder="Text your password">
-    </div>
-    <div class="box-button">
-      <button v-bind:class="{ 'is-loading': this.authentication }" class="button is-success" v-on:click="this.teste">Confirm</button>
-    </div>
+  <div class="teste">
+      <span class="login">LOGIN:</span>
+      <input class="input login-input" v-model="login" type="text" placeholder="Text your username">
+      <span class="password">PASSWORD:</span>
+      <input class="input password-input" v-model="password" type="password" placeholder="Text your password">
+      <span class="error-login" v-if="errorLogin">{{ errorLogin }}</span>
+      <button v-bind:class="{ 'is-loading': this.authentication }" class="button is-success box-button" v-on:click="this.loginSubmit">Confirm</button>
   </div>
 </template>
 
 <script>
+import axios from '../axios/index';
+
 export default {
   name: 'Login',
   data() {
@@ -22,42 +19,77 @@ export default {
       password: null,
       login: null,
       authentication: false,
+      errorLogin: null,
     }
   },
   methods: {
-    teste() {
+    loginSubmit() {
       this.authentication = true;
-      console.log(this.password);
-      console.log(this.login);
+      axios.post('/login', {username: this.login, password: this.password })
+        .then((response) => {
+          if (response.status === 200) {
+            this.$router.push('home');
+          }
+          this.errorLogin = response.data;
+          this.authentication = false;
+        });
     }
   },
 };
 </script>
 
 <style lang="scss">
+  .teste {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 50px;
+    border: 1px solid green;
+    padding: 10px;
+    display: grid;
+    justify-self: center;
+    align-self: center;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 15px;
+    grid-template-areas:
+    "login loginInput loginInput loginInput"
+    "password password-input password-input password-input"
+    "error error . box-button";
 
-  .box-login {
-    position: absolute;
-    top: 20%;
-    left: 30%;
-    width: 40%;
-    border: 1px green dashed;
-    padding: 20px;
+    .login-input {
+      display: grid;
+      justify-self: end;
+      grid-area: loginInput;
+    }
+
+    .password-input {
+      display: grid;
+      justify-self: end;
+      grid-area: password-input;
+    }
+
+    span {
+      .login {
+        grid-area: login;
+      }
+
+      .password {
+        grid-area: password;
+      }
+    }
     
     .box-input {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      margin: 5px;
+    }
 
-      span {
-        margin-right: 1px;
-      }
+    .error-login {
+      grid-area: error;
+      color: red;
+      font-size: 12px;
     }
 
     .box-button {
-      display: flex;
-      justify-content: flex-end;
+      grid-area: box-button;
     }
   }
 

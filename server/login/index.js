@@ -26,7 +26,7 @@ passport.deserializeUser(function(id, cb) {
     });
 });
 
-router.post('/login', 
+router.post('/', 
   passport.authenticate('local', { failureRedirect: '/error' }),
   function(req, res) {
     res.send('Congratulation!');
