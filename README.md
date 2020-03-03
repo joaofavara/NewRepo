@@ -1,29 +1,18 @@
-# newrepo
+# NewRepo
 
 ## Project setup
-```
-npm install
-```
+### Create the mongodb local
+`docker-compose up`
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### Run the script, creating an user on the mongo
+ - To go database/script/
+ - Run the setup.js `node setup.js`
+  
+### Start the application
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- Front-end:
+ - `npm run serve`
+ 
+- Back-end
+ - Inside the server folder
+ - `nodemon index.js`
