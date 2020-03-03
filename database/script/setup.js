@@ -13,10 +13,10 @@ db.on('error', () => {
     console.error.bind(console, 'mongodb connection error');
 });
 
-db.once('open', () => { 
+db.once('open', async () => {
     console.log('mongodb connected');
     db.createCollection('users');
-    const result = user.create({
+    const result = await user.create({
         type: 'user',
         username: 'teste',
         password: 'teste',
