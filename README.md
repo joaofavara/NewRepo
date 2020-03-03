@@ -2,7 +2,8 @@
 
 ## Project setup
 ### Create the mongodb local
-`docker-compose up`
+- Run the docker command: `docker-compose up`
+  - Warning: If the mongo express do not work, restart the container
 
 ### Run the script, creating an user on the mongo
  - To go database/script/
