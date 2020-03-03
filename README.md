@@ -11,8 +11,8 @@
 ### Start the application
 
 - Front-end:
- - `npm run serve`
+  - `npm run serve`
  
 - Back-end
- - Inside the server folder
- - `nodemon index.js`
+  - Inside the server folder
+  - `nodemon index.js`
