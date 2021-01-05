@@ -10,7 +10,7 @@
     "createUser": "nodemon ./server/index.js & node ./database/script/setup.js"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "bulma": "^0.8.0",
     "cookie-parser": "^1.4.4",
